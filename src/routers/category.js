@@ -41,5 +41,12 @@ router.patch('/:id', async(req, res)=> {
     }
 });
 
-
+router.delete('/:id', async(req, res)=> {
+    try{
+        const deleteCategory = await Category.delete(req.params.id);
+        res.json(deleteCategory);
+    }catch(err){
+        res.status(400).json({message: 'get id çalışmıyor'})
+    }
+});
 module.exports = router;

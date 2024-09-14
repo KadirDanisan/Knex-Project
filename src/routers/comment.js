@@ -32,7 +32,7 @@ router.post('/', async(req, res)=> {
     }
 });
 
-router.patch('/:id', async(req, res)=> {
+router.put('/:id', async(req, res)=> {
     try{
         const upComment = await Comment.update(req.body, req.params.id);
         res.json(upComment);
@@ -41,4 +41,12 @@ router.patch('/:id', async(req, res)=> {
     }
 });
 
+router.delete('/:id', async(req, res)=> {
+    try{
+        const deleteComment = await Comment.delete(req.params.id);
+        res.json(deleteComment);
+    }catch(err){
+        res.status(400).json({message: 'get id çalışmıyor'})
+    }
+});
 module.exports = router;
